@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
     address:Address;
     hobbies:string[];
     posts:Post[];
+    isEdit:boolean = false;
 
   constructor(private dataService:DataService) {
       console.log('Constructor ran...')
@@ -32,7 +33,7 @@ export class UserComponent implements OnInit {
     this.hobbies = ['Play ps4', 'Watch movies', 'Listen to music'];
 
     this.dataService.getPosts().subscribe((posts) => {
-      console.log(posts);
+      this.posts = posts;
     });
   }
 
@@ -52,6 +53,11 @@ export class UserComponent implements OnInit {
       }
     }
   }
+
+  toggleEdit(){
+    this.isEdit = !this.isEdit;
+  }
+
 }
 
 
